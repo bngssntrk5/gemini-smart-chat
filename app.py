@@ -12,15 +12,12 @@ client = genai.Client(api_key=api_key)
 def solve_and_run():
     try:
         print("Sistemdeki aktif modeller taranıyor...")
-        # Mevcut modelleri listele
         available_models = [m.name for m in client.models.list()]
         
         if not available_models:
             print("Hata: Hiç model bulunamadı. API anahtarını kontrol et!")
             return
 
-        # Listede 'gemini-1.5-flash' içeren ilk modeli seç
-        # Eğer yoksa listenin en başındaki modeli seç
         selected_model = next((m for m in available_models if "gemini-1.5-flash" in m), available_models[0])
         
         print(f"Uygun model bulundu: {selected_model}")
